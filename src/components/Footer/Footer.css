@@ -1,0 +1,42 @@
+footer {
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+  gap: 1rem;
+}
+
+.icon-rrss {
+  display: flex;
+  gap: 1rem;
+}
+
+.icon-rrss img {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+}
+
+.icon-rrss img:hover {
+  animation: zoom 0.4s linear;
+}
+
+@keyframes zoom {
+  40% {
+    transform: scale(1.2);
+  }
+
+  60% {
+    transform: scale(0.8);
+  }
+
+  80% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,32 @@
+:root {
+  font-family: 'Acme', sans-serif;
+
+  --color-one: #0c142d;
+  --color-two: #1c2540;
+  --color-three: #394f6a;
+  --color-four: #5abfbd;
+  --color-five: #a7dadc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+main {
+  height: 80vh;
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color-three);
+}
+
+
+

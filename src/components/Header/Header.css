@@ -1,0 +1,19 @@
+header {
+  height: 10vh;
+  display: flex;
+  padding: 0 2rem;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header ul {
+  display: flex;
+  gap: 2rem;
+  list-style-type: none;
+}
+
+header a {
+  font-size: 1.1rem;
+  color: inherit;
+}

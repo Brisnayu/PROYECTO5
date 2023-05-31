@@ -1,0 +1,31 @@
+.container-nextday {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    
+    width: 95%;
+    height: 100%;
+}
+
+.info-days {
+    /* border: 3px solid yellow; */
+    width: 14rem;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+
+    background-color: var(--color-five);
+}
+
+.info-days img{
+    /* border: 2px solid blue; */
+    width: 8rem;
+    height: 8rem;
+    margin: 1.5rem 0;
+}
