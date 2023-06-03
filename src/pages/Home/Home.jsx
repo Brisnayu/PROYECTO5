@@ -3,60 +3,82 @@ import "./Home.css";
 import { useState, useEffect } from "react";
 
 const Home = () => {
-  
-  const hours = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
-  const today = new Date().toLocaleDateString([], {year: "numeric", month: "short", day: "numeric"});
+  const hours = new Date().toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const today = new Date().toLocaleDateString([], {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 
   //Obteniendo coordenadas del ordenador!
-  const [stateLat, setStateLat] = useState(0);
-  const [stateLon, setStateLon] = useState(0);
+  const [stateLat, setStateLat] = useState();
+  const [stateLon, setStateLon] = useState();
+  const [direction, setDirection] = useState(false);
 
   const [weatherDay, setWeatherDay] = useState([]);
 
+  useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       setStateLat(position.coords.latitude.toFixed(2));
       setStateLon(position.coords.longitude.toFixed(2));
     });
-
+  }, []);
 
   console.log("esto vale la lat", stateLat);
   console.log("esto vale la lon", stateLon);
+  console.log("Tengo dirección?", direction);
 
   const WEATHER_API_KEY = "dfad8d7ba7c96049c80872a31938271f";
   const WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?lat=${stateLat}&lon=${stateLon}&appid=${WEATHER_API_KEY}`;
 
+  const fetchData = async () => {
+    setDirection(false);
+
+    const data = await fetch(WEATHER_API);
+    const dataJSON = await data.json();
+
+    console.log("DENTRO DEL FETCH", dataJSON);
+    setWeatherDay(dataJSON);
+    setDirection(true);
+  };
+
   useEffect(() => {
-    if (stateLat !== 0) {
-      const fetchData = async () => {
-        const data = await fetch(WEATHER_API);
-        const dataJSON = await data.json();
-        console.log("DENTRO DEL FETCH", dataJSON);
-        setWeatherDay(dataJSON);
-      };
+    if (stateLat) {
       fetchData();
     }
-  }, []);
+  }, [stateLat]);
 
-  console.log("FUERA DEL FETCH", weatherDay);
+  
+
+  // console.log("FUERA DEL FETCH: ", weatherDay);
 
   // console.log("Este es mi array a atacar", weatherDay);
-  // console.log(weatherDay.main.temp_min)
+  // console.log(weatherDay.weather[0].description)
 
   return (
     <main>
-       <article className="container-home">
+      {direction ? (
+               <article className="container-home">
         <section className="weather-today">
-          <h1>{weatherDay.name} - {weatherDay.sys.country}</h1>
-          <p>{hours} - {today}</p>
+          <h1>
+            {weatherDay.name} - {weatherDay.sys.country}
+          </h1>
+          <p>
+            {hours} - {today}
+          </p>
           <h2>{Math.round(weatherDay.main.temp - 273.15)}º</h2>
           <h3>
-            Mínima {Math.round(weatherDay.main.temp_min - 273.15)}º - Máxima {Math.round(weatherDay.main.temp_max - 273.15)}º
+            Mínima {Math.round(weatherDay.main.temp_min - 273.15)}º - Máxima{" "}
+            {Math.round(weatherDay.main.temp_max - 273.15)}º
           </h3>
-          <p>Sensación térmica {Math.round(weatherDay.main.feels_like - 273.15)}º</p>
-          <img
-            src="http://openweathermap.org/img/w/01d.png"
-            alt=""
-          />
+          <p>
+            Sensación térmica {Math.round(weatherDay.main.feels_like - 273.15)}º
+          </p>
+          <br />
+          <img src={`/public/icon-temps/${weatherDay.weather[0].icon}.png`} alt={weatherDay.weather[0].description}/>
         </section>
 
         <section className="weather-chart">
@@ -86,7 +108,10 @@ const Home = () => {
             <img src="./icon-clouds.png" alt="icon-clouds" />
           </div>
         </section>
-      </article>
+      </article> 
+      ) : (
+        <h2>Cargando!!!!</h2>
+      )}
     </main>
   );
 };
