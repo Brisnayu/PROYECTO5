@@ -1,9 +1,17 @@
 import "./OtherCities.css";
+import { GeoCoordinates } from "../../utils/GeoCoordinates";
 
 const OtherCities = () => {
   return (
     <main>
-      <h3>Estoy en OtherCities</h3>
+      <label htmlFor="cities">
+        <h3>Selecciona una ciudad</h3>
+      </label>
+      <select name="cities" id="cities">
+        {GeoCoordinates.map((city) => 
+          <option value={city.name}>{city.name}</option>
+        )}
+      </select>
     </main>
   );
 };
