@@ -1,4 +1,66 @@
+.container-cities {
+  /* border: 2px solid yellow; */
+  width: 90%;
+  height: 90%;
+  backdrop-filter: blur(3px);
+
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+
+  border-radius: 15px;
+
+  display: grid;
+  align-items: center;
+  align-content: center;
+  grid-column: 10% 25% 40% 25%;
+}
+
+.section-cities {
+  border: 6px solisd blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100px;
+}
+
+.dates-sub {
+  border: 2px solid green;
+  width: 100%;
+  height: 25%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dates-sub > h2 {
+  font-size: 10rem;
+}
+
+.dates-sub > img {
+  /* border: 2px solid red; */
+  width: 60px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.dates-half {
+  border: 2px solid red;
+  /* height: 40%;
+    width: 100%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dates-half > img {
+  width: 15%;
+  height: auto;
+}
+
 #cities {
-    border: 2px solid red;
-    background-color: var(--color-three);
+  border: 2px solid red;
+  background-color: var(--color-three);
 }

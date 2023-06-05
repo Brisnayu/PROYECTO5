@@ -6,7 +6,8 @@ export const GeoCoordinates = [
         "coord": {
             "lon": 2.12804,
             "lat": 41.399422
-        }
+        },
+        "img": "url(../public/img-cities/BCN.jpg)"
     },
     {
         "id": 3646738,
@@ -15,7 +16,8 @@ export const GeoCoordinates = [
         "coord": {
             "lon": -66.879189,
             "lat": 10.48801
-        }
+        },
+        "img": "url(../public/img-cities/CCS.jpg)"
     },
     {
         "id": 3169070,
@@ -24,7 +26,8 @@ export const GeoCoordinates = [
         "coord": {
             "lon": 12.4839,
             "lat": 41.894741
-        }
+        },
+        "img": "url(../public/img-cities/ROME.jpg)"
     },
     {
         "id": 3688685,
@@ -33,7 +36,8 @@ export const GeoCoordinates = [
         "coord": {
             "lon": -74.183327,
             "lat": 4.25
-        }
+        },
+        "img": "url(../public/img-cities/BCN.jpg)"
     },
     {
         "id": 2130658,
@@ -42,7 +46,8 @@ export const GeoCoordinates = [
         "coord": {
             "lon": 140.740005,
             "lat": 40.82444
-        }
+        },
+        "img": "url(../public/img-cities/BCN.jpg)"
     },
     {
         "id": 2650225,
@@ -51,7 +56,8 @@ export const GeoCoordinates = [
         "coord": {
             "lon": -3.19648,
             "lat": 55.952061
-        }
+        },
+        "img": "url(../public/img-cities/BCN.jpg)"
     },
     {
         "id": 6618607,
@@ -60,6 +66,7 @@ export const GeoCoordinates = [
         "coord": {
             "lon": 2.3417,
             "lat": 48.8592
-        }
+        },
+        "img": "url(../public/img-cities/PARIS.jpg)"
     },
 ]

@@ -1,17 +1,9 @@
+import Today from "../../components/Today/Today";
 import "./Home.css";
 
 import { useState, useEffect } from "react";
 
 const Home = () => {
-  const hours = new Date().toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-  const today = new Date().toLocaleDateString([], {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
 
   //Obteniendo coordenadas del ordenador!
   const [stateLat, setStateLat] = useState();
@@ -60,9 +52,9 @@ const Home = () => {
               <h1>
                 {weatherDay.name} - {weatherDay.sys.country}
               </h1>
-              <p>
-                {hours} - {today}
-              </p>
+              
+              <Today />
+              
               <h2>{Math.round(weatherDay.main.temp - 273.15)}º</h2>
               <h3>
                 Mínima {Math.round(weatherDay.main.temp_min - 273.15)}º - Máxima{" "}
