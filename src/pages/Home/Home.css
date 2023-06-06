@@ -8,6 +8,7 @@
 
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    background-color: var(--color-three);
 }
 
 .container-home h1 {
@@ -33,6 +34,7 @@
   width: 70%;
   height: 100%;
   padding: 1.5rem 0;
+  background-size: cover;
 }
 
 .img-time {

@@ -2,39 +2,3 @@
     /* background-image: url(./icon-background/01d.jpg); */
     background-size: cover;
 }
-
-
-.Barcelona {
-    background-image: url(../public/img-cities/BCN.jpg);
-    background-size: cover;
-}
-
-.Aomori {
-    background-image: url(../public/img-cities/AOMORI.jpg);
-    background-size: cover;
-}
-
-.bta {
-    background-image: url(../public/img-cities/BTA.jpg);
-    background-size: cover;
-}
-
-.Caracas {
-    background-image: url(../public/img-cities/CCS.jpg);
-    background-size: cover;
-}
-
-.Edinburgh {
-    background-image: url(../public/img-cities/EDIN.jpg);
-    background-size: cover;
-}
-
-.Paris {
-    background-image: url(../public/img-cities/PARIS.jpg);
-    background-size: cover;
-}
-
-.Rome {
-    background-image: url(../public/img-cities/ROME.jpg);
-    background-size: cover;
-}

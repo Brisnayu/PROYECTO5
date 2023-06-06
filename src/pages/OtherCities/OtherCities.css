@@ -1,12 +1,15 @@
 .container-cities {
-  /* border: 2px solid yellow; */
+  border: 2px solid var(--color-three);
   width: 90%;
   height: 90%;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(20px);
+  /* background-color: var(--color-five); */
+  /* opacity: 0.8; */
 
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+
+  /* box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
     rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px; */
 
   border-radius: 15px;
 
@@ -14,12 +17,17 @@
   align-items: center;
   align-content: center;
   grid-column: 10% 25% 40% 25%;
+  color: black;
+}
+
+.cities-flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .section-cities {
-  border: 6px solisd blue;
-  display: flex;
-  align-items: center;
+  /* border: 6px solisd blue; */
   justify-content: center;
   gap: 1rem;
   width: 100%;
@@ -27,16 +35,13 @@
 }
 
 .dates-sub {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   width: 100%;
   height: 25%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .dates-sub > h2 {
-  font-size: 10rem;
+  font-size: 8rem;
 }
 
 .dates-sub > img {
@@ -46,21 +51,52 @@
   border-radius: 50%;
 }
 
-.dates-half {
-  border: 2px solid red;
+/* .dates-half {
+  border: 2px solid red; */
   /* height: 40%;
-    width: 100%; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    width: 100%; 
+}*/
 
 .dates-half > img {
-  width: 15%;
+  width: 10%;
   height: auto;
 }
 
 #cities {
-  border: 2px solid red;
-  background-color: var(--color-three);
+  /* border: 2px solid red; */
+  background-color: var(--color-one);
+  border-radius: 10px;
+
+  width: 15rem;
+  height: 2rem;
+  color: whitesmoke;
+}
+
+.dates-lower > h3 {
+  font-size: 4rem;
+  color: var(--color-contrast);
+}
+
+.cities-principal {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cities-card {
+  /* border: 2px solid yellow; */
+  width: 50%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.2rem;
+}
+
+.cities-card > img {
+  width: 15%;
+  height: auto;
 }

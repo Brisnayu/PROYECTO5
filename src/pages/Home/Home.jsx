@@ -4,7 +4,6 @@ import "./Home.css";
 import { useState, useEffect } from "react";
 
 const Home = () => {
-
   //Obteniendo coordenadas del ordenador!
   const [stateLat, setStateLat] = useState();
   const [stateLon, setStateLon] = useState();
@@ -19,9 +18,9 @@ const Home = () => {
     });
   }, []);
 
-  console.log("esto vale la lat", stateLat);
-  console.log("esto vale la lon", stateLon);
-  console.log("Tengo dirección?", direction);
+  // console.log("esto vale la lat", stateLat);
+  // console.log("esto vale la lon", stateLon);
+  // console.log("Tengo dirección?", direction);
 
   const WEATHER_API_KEY = "dfad8d7ba7c96049c80872a31938271f";
   const WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?lat=${stateLat}&lon=${stateLon}&appid=${WEATHER_API_KEY}`;
@@ -31,8 +30,8 @@ const Home = () => {
 
     const data = await fetch(WEATHER_API);
     const dataJSON = await data.json();
-
-    console.log("DENTRO DEL FETCH", dataJSON);
+    console.log(dataJSON)
+    // console.log("DENTRO DEL FETCH", dataJSON);
     setWeatherDay(dataJSON);
     setDirection(true);
   };
@@ -48,20 +47,25 @@ const Home = () => {
       {direction ? (
         <article className="container-home">
           <section className="weather-today">
-            <div className="info-days">
+            <div
+              className="info-days"
+              style={{
+                backgroundImage: `url(./public/icon-background/${weatherDay.weather[0].icon}.jpg)`
+              }}
+            >
               <h1>
                 {weatherDay.name} - {weatherDay.sys.country}
               </h1>
-              
+
               <Today />
-              
+
               <h2>{Math.round(weatherDay.main.temp - 273.15)}º</h2>
               <h3>
-                Mínima {Math.round(weatherDay.main.temp_min - 273.15)}º - Máxima{" "}
+                Mínima {Math.round(weatherDay.main.temp_min - 273.15)}º - Máxima
                 {Math.round(weatherDay.main.temp_max - 273.15)}º
               </h3>
               <p>
-                Sensación térmica{" "}
+                Sensación térmica
                 {Math.round(weatherDay.main.feels_like - 273.15)}º
               </p>
               <br />
