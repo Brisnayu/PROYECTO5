@@ -17,5 +17,5 @@ header ul {
 
 header a {
   font-size: 1.1rem;
-  color: inherit;
+  color: var(--color-contrast);
 }

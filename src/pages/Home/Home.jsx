@@ -1,4 +1,5 @@
 import Today from "../../components/Today/Today";
+import Spinner from "../../components/Spinner/Spinner";
 import "./Home.css";
 
 import { useState, useEffect } from "react";
@@ -30,7 +31,7 @@ const Home = () => {
 
     const data = await fetch(WEATHER_API);
     const dataJSON = await data.json();
-    console.log(dataJSON)
+    console.log(dataJSON);
     // console.log("DENTRO DEL FETCH", dataJSON);
     setWeatherDay(dataJSON);
     setDirection(true);
@@ -48,11 +49,12 @@ const Home = () => {
         <article className="container-home">
           <section className="weather-today">
             <div
-              className="info-days"
+              className="background-weather"
               style={{
-                backgroundImage: `url(./public/icon-background/${weatherDay.weather[0].icon}.jpg)`
+                backgroundImage: `url(./public/icon-background/${weatherDay.weather[0].icon}.jpg)`,
               }}
-            >
+            />
+            <div className="text-weather">
               <h1>
                 {weatherDay.name} - {weatherDay.sys.country}
               </h1>
@@ -106,7 +108,7 @@ const Home = () => {
           </section>
         </article>
       ) : (
-        <h2>Cargando!!!!</h2>
+        <Spinner />
       )}
     </main>
   );

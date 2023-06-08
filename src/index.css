@@ -6,6 +6,7 @@
   --color-three: #394f6a;
   --color-four: #5abfbd;
   --color-five: #a7dadc;
+  --color-background: whitesmoke;
 
   --color-contrast: #ce330d;
 }
@@ -20,10 +21,20 @@
   /* color: whitesmoke; */
 }
 
+body {
+  background-color: var(--color-background);
+}
+
 main {
   height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  position: relative;
+}
+
+.active {
+  color: var(--color-four);
 }

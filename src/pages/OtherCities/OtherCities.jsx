@@ -2,12 +2,16 @@ import "./OtherCities.css";
 import { useContext, useState, useEffect } from "react";
 import Today from "../../components/Today/Today";
 import WeatherCities from "../../components/WeatherCities/WeatherCities";
+import Spinner from "../../components/Spinner/Spinner";
 
 import { WeatherContext } from "../../context/weatherContext";
 import { GeoCoordinates } from "../../utils/GeoCoordinates";
+import { imageCities } from "../../utils/ImageCities";
 
 const OtherCities = () => {
   const { currentCity, setCurrentCity } = useContext(WeatherContext);
+
+  const img = imageCities[currentCity];
 
   const currentCCityData = GeoCoordinates.filter(
     (city) => city.name === currentCity
@@ -55,8 +59,10 @@ const OtherCities = () => {
   // console.log(currentCity);
 
   return (
-    <main>
-      {poli ? (
+    <>
+    {poli ? (
+      <main>
+        <article className="background-image" style={{ backgroundImage: `url(${img})` }} />
         <article className="container-cities">
           <section className="section-cities cities-flex">
             <label htmlFor="cities">
@@ -78,8 +84,7 @@ const OtherCities = () => {
             <div className="dates-half cities-flex">
               <h3>
                 Mínima {Math.round(weatherDay1.main.temp_min - 273.15)}º -
-                Máxima
-                {Math.round(weatherDay1.main.temp_max - 273.15)}º
+                Máxima {Math.round(weatherDay1.main.temp_max - 273.15)}º
               </h3>
               <img
                 className="img-time"
@@ -87,8 +92,7 @@ const OtherCities = () => {
                 alt={weatherDay1.weather[0].description}
               />
               <p>
-                Sensación térmica
-                {Math.round(weatherDay1.main.feels_like - 273.15)}º
+                Sensación térmica {Math.round(weatherDay1.main.feels_like - 273.15)}º
               </p>
             </div>
             <div className="dates-lower">
@@ -124,11 +128,14 @@ const OtherCities = () => {
             </div>
           </section>
         </article>
+      </main>
       ) : (
-        <h2>CARGANDO</h2>
+        <main>
+          <Spinner />
+        </main>
       )}
-    </main>
-  );
-};
+  </>
+);
+}
 
 export default OtherCities;

@@ -6,6 +6,7 @@ footer {
   flex-wrap: wrap;
   padding: 0 1rem;
   gap: 1rem;
+  color: var(--color-contrast);
   /* background-color: var(--color-five); */
 }
 
@@ -18,8 +19,9 @@ footer {
   width: 3.5rem;
   height: 3.5rem;
   display: flex;
-  background-color: whitesmoke;
-  border-radius: 20px;
+
+  background-color: var(--color-five);
+  border-radius: 30px;
 }
 
 .icon-rrss img:hover {
