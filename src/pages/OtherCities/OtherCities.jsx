@@ -1,12 +1,13 @@
 import "./OtherCities.css";
 import { useContext, useState, useEffect } from "react";
-import Today from "../../components/Today/Today";
 import WeatherCities from "../../components/WeatherCities/WeatherCities";
+import WeatherDates from "../../components/WeatherDates/WeatherDates";
 import Spinner from "../../components/Spinner/Spinner";
 
 import { WeatherContext } from "../../context/weatherContext";
 import { GeoCoordinates } from "../../utils/GeoCoordinates";
 import { imageCities } from "../../utils/ImageCities";
+import ActualTemperature from "../../components/ActualTemperature/ActualTemperature";
 
 const OtherCities = () => {
   const { currentCity, setCurrentCity } = useContext(WeatherContext);
@@ -60,82 +61,49 @@ const OtherCities = () => {
 
   return (
     <>
-    {poli ? (
-      <main>
-        <article className="background-image" style={{ backgroundImage: `url(${img})` }} />
-        <article className="container-cities">
-          <section className="section-cities cities-flex">
-            <label htmlFor="cities">
-              <h3>Selecciona una ciudad</h3>
-            </label>
+      {poli ? (
+        <main>
+          <article className="background-image"
+            style={{ backgroundImage: `url(${img})` }}
+          />
+          <article className="container-cities">
+            <section className="section-cities cities-flex">
+              <label htmlFor="cities">
+                <h3>Selecciona una ciudad</h3>
+              </label>
 
-            <WeatherCities setCurrentCity={setCurrentCity} currentCity={currentCity} />
-          </section>
-
-          <section>
-            <div className="dates-sub cities-flex">
-              <Today />
-              <h2>{Math.round(weatherDay1.main.temp - 273.15)}º</h2>
-              <img
-                src="https://i.pinimg.com/originals/02/5f/29/025f29a640db04a067d7a540a7b4d004.gif"
-                alt="plane and world gif"
+              <WeatherCities
+                setCurrentCity={setCurrentCity}
+                currentCity={currentCity}
               />
-            </div>
-            <div className="dates-half cities-flex">
-              <h3>
-                Mínima {Math.round(weatherDay1.main.temp_min - 273.15)}º -
-                Máxima {Math.round(weatherDay1.main.temp_max - 273.15)}º
-              </h3>
-              <img
-                className="img-time"
-                src={`/public/icon-temps/${weatherDay1.weather[0].icon}.png`}
-                alt={weatherDay1.weather[0].description}
-              />
-              <p>
-                Sensación térmica {Math.round(weatherDay1.main.feels_like - 273.15)}º
-              </p>
-            </div>
-            <div className="dates-lower">
-              <h3>{currentCity}</h3>
+            </section>
 
-              <div className="cities-principal">
-                <div className="cities-card">
-                  <h4>Viento</h4>
-                  <p>{Math.round(weatherDay1.wind.speed * 3.6)} km/h</p>
-                  <img src="./icon-wind.png" alt="icon-wind" />
-                </div>
-                <div className="cities-card">
-                  <h4>Dirección del viento</h4>
-                  <p>{weatherDay1.wind.deg}º</p>
-                  <img src="./icon-wind-direction.png" alt="icon-wind-direction" />
-                </div>
-                <div className="cities-card">
-                  <h4>Humedad</h4>
-                  <p>{weatherDay1.main.humidity}%</p>
-                  <img src="./icon-humidity.png" alt="icon-humidity" />
-                </div>
-                <div className="cities-card">
-                  <h4>Visibilidad</h4>
-                  <p>{weatherDay1.visibility / 1000} km</p>
-                  <img src="./icon-visibility.png" alt="icon-visibility" />
-                </div>
-                <div className="cities-card">
-                  <h4>Nubes</h4>
-                  <p>{weatherDay1.clouds.all}%</p>
-                  <img src="./icon-clouds.png" alt="icon-clouds" />
+            <section>
+
+              <ActualTemperature
+                classInit="dates-sub cities-flex"
+                resWeather={weatherDay1}
+                classSecond="dates-half cities-flex"
+                classImage="img-time"
+              />
+
+              <div className="dates-lower">
+                <h3>{currentCity}</h3>
+
+                <div className="cities-principal">
+                  <WeatherDates resWeather={weatherDay1} view="cities" />
                 </div>
               </div>
-            </div>
-          </section>
-        </article>
-      </main>
+            </section>
+          </article>
+        </main>
       ) : (
         <main>
           <Spinner />
         </main>
       )}
-  </>
-);
-}
+    </>
+  );
+};
 
 export default OtherCities;

@@ -1,6 +1,9 @@
-import Today from "../../components/Today/Today";
-import Spinner from "../../components/Spinner/Spinner";
 import "./Home.css";
+
+import WeatherDates from "../../components/WeatherDates/WeatherDates";
+import ActualTemperature from "../../components/ActualTemperature/ActualTemperature";
+import Spinner from "../../components/Spinner/Spinner";
+
 
 import { useState, useEffect } from "react";
 
@@ -59,52 +62,20 @@ const Home = () => {
                 {weatherDay.name} - {weatherDay.sys.country}
               </h1>
 
-              <Today />
-
-              <h2>{Math.round(weatherDay.main.temp - 273.15)}º</h2>
-              <h3>
-                Mínima {Math.round(weatherDay.main.temp_min - 273.15)}º - Máxima
-                {Math.round(weatherDay.main.temp_max - 273.15)}º
-              </h3>
-              <p>
-                Sensación térmica
-                {Math.round(weatherDay.main.feels_like - 273.15)}º
-              </p>
-              <br />
-              <img
-                className="img-time"
-                src={`/public/icon-temps/${weatherDay.weather[0].icon}.png`}
-                alt={weatherDay.weather[0].description}
+              <ActualTemperature 
+              classInit="datesHome"
+              resWeather={weatherDay}
+              classSecond="secondHome"
+              classImage="imageIcon"
               />
+
             </div>
           </section>
 
           <section className="weather-chart">
-            <div className="card">
-              <h4>Viento</h4>
-              <p>{Math.round(weatherDay.wind.speed * 3.6)} km/h</p>
-              <img src="./icon-wind.png" alt="icon-wind" />
-            </div>
-            <div className="card">
-              <h4>Dirección del viento</h4>
-              <p>{weatherDay.wind.deg}º</p>
-              <img src="./icon-wind-direction.png" alt="icon-wind-direction" />
-            </div>
-            <div className="card">
-              <h4>Humedad</h4>
-              <p>{weatherDay.main.humidity}%</p>
-              <img src="./icon-humidity.png" alt="icon-humidity" />
-            </div>
-            <div className="card">
-              <h4>Visibilidad</h4>
-              <p>{weatherDay.visibility / 1000} km</p>
-              <img src="./icon-visibility.png" alt="icon-visibility" />
-            </div>
-            <div className="card">
-              <h4>Nubes</h4>
-              <p>{weatherDay.clouds.all}%</p>
-              <img src="./icon-clouds.png" alt="icon-clouds" />
-            </div>
+
+            <WeatherDates resWeather={weatherDay} view="home" />
+
           </section>
         </article>
       ) : (
