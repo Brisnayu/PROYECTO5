@@ -1,80 +1,59 @@
+import { useState, useEffect } from "react";
 import "./NextDay.css";
+import Spinner from "../../components/Spinner/Spinner";
+import CardNextDays from "../../components/CardNextDays/CardNextDays";
 
 const NextDay = () => {
+  //Obteniendo coordenadas del ordenador!
+  const [stateLat, setStateLat] = useState();
+  const [stateLon, setStateLon] = useState();
+  const [direction, setDirection] = useState(false);
+
+  const [weatherDay, setWeatherDay] = useState([]);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setStateLat(position.coords.latitude.toFixed(2));
+      setStateLon(position.coords.longitude.toFixed(2));
+    });
+  }, []);
+
+  const WEATHER_API_KEY = "dfad8d7ba7c96049c80872a31938271f";
+  const WEATHER_API_FIVEDAYS = `https://api.openweathermap.org/data/2.5/forecast?lat=${stateLat}&lon=${stateLon}&appid=${WEATHER_API_KEY}`;
+
+  const fetchData = async () => {
+    setDirection(false);
+
+    const data = await fetch(WEATHER_API_FIVEDAYS);
+    const dataJSON = await data.json();
+    // console.log(dataJSON);
+    // console.log("DENTRO DEL FETCH", dataJSON.list);
+
+    const newArray = dataJSON.list.filter((element, index) => {
+      return [index + 9] % 8 === 0;
+    });
+
+    setWeatherDay(newArray);
+    setDirection(true);
+  };
+
+  useEffect(() => {
+    if (stateLat) {
+      fetchData();
+    }
+  }, [stateLat]);
+
+  // console.log(weatherDay);
+
   return (
     <main>
-      <article className="container-nextday">
-        <section className="info-days">
-          <h2>MARTES</h2>
-          <p>21 Jun 2023</p>
-          <img
-            src="https://cdn.icon-icons.com/icons2/571/PNG/512/clouds-outlined-weather-symbol_icon-icons.com_54695.png"
-            alt=""
-          />
-          <h3>mín 20º - máx 25º</h3>
-          <h4>viento</h4>
-          <h4>dirección del viento</h4>
-          <h4>humedad</h4>
-          <h4>visibilidad</h4>
-          <h4>nubes</h4>
-        </section>
-        <section className="info-days">
-          <h2>MARTES</h2>
-          <p>21 Jun 2023</p>
-          <img
-            src="https://cdn.icon-icons.com/icons2/571/PNG/512/clouds-outlined-weather-symbol_icon-icons.com_54695.png"
-            alt=""
-          />
-          <h3>mín 20º - máx 25º</h3>
-          <h4>viento</h4>
-          <h4>dirección del viento</h4>
-          <h4>humedad</h4>
-          <h4>visibilidad</h4>
-          <h4>nubes</h4>
-        </section>
-        <section className="info-days">
-          <h2>MARTES</h2>
-          <p>21 Jun 2023</p>
-          <img
-            src="https://cdn.icon-icons.com/icons2/571/PNG/512/clouds-outlined-weather-symbol_icon-icons.com_54695.png"
-            alt=""
-          />
-          <h3>mín 20º - máx 25º</h3>
-          <h4>viento</h4>
-          <h4>dirección del viento</h4>
-          <h4>humedad</h4>
-          <h4>visibilidad</h4>
-          <h4>nubes</h4>
-        </section>
-        <section className="info-days">
-          <h2>MARTES</h2>
-          <p>21 Jun 2023</p>
-          <img
-            src="https://cdn.icon-icons.com/icons2/571/PNG/512/clouds-outlined-weather-symbol_icon-icons.com_54695.png"
-            alt=""
-          />
-          <h3>mín 20º - máx 25º</h3>
-          <h4>viento</h4>
-          <h4>dirección del viento</h4>
-          <h4>humedad</h4>
-          <h4>visibilidad</h4>
-          <h4>nubes</h4>
-        </section>
-        <section className="info-days">
-          <h2>MARTES</h2>
-          <p>21 Jun 2023</p>
-          <img
-            src="https://cdn.icon-icons.com/icons2/571/PNG/512/clouds-outlined-weather-symbol_icon-icons.com_54695.png"
-            alt=""
-          />
-          <h3>mín 20º - máx 25º</h3>
-          <p>viento</p>
-          <h4>dirección del viento</h4>
-          <h4>humedad</h4>
-          <h4>visibilidad</h4>
-          <h4>nubes</h4>
-        </section>
-      </article>
+      {direction ? (
+        <article className="container-nextday">
+          <CardNextDays weatherArray={weatherDay} />
+        </article>
+      ) : (
+        <Spinner />
+      )}
     </main>
   );
 };

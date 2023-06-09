@@ -2,14 +2,14 @@ import "./ActualTemperature.css";
 import Today from "../Today/Today";
 
 const ActualTemperature = ({
-  classInit,
+  styleInit,
   resWeather,
-  classSecond,
-  classImage,
+  styleSecond,
+  styleImage,
 }) => {
   return (
     <>
-      <div className={classInit}>
+      <div className={styleInit}>
         <Today />
         <h2>{Math.round(resWeather.main.temp - 273.15)}º</h2>
         <img
@@ -18,13 +18,13 @@ const ActualTemperature = ({
         />
       </div>
 
-      <div className={classSecond}>
+      <div className={styleSecond}>
         <h3>
           Mínima {Math.round(resWeather.main.temp_min - 273.15)}º - Máxima{" "}
           {Math.round(resWeather.main.temp_max - 273.15)}º
         </h3>
         <img
-          className={classImage}
+          className={styleImage}
           src={`/public/icon-temps/${resWeather.weather[0].icon}.png`}
           alt={resWeather.weather[0].description}
         />

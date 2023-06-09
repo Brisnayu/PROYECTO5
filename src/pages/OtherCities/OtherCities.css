@@ -20,10 +20,10 @@
 
   border-radius: 15px;
 
-  /* display: grid;
+  display: grid;
   align-items: center;
   align-content: center;
-  grid-column: 10% 25% 40% 25%; */
+  grid-column: 10% 25% 40% 25%; 
   color: var(--color-one);
 }
 

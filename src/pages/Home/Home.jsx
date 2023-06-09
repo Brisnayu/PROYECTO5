@@ -8,6 +8,7 @@ import Spinner from "../../components/Spinner/Spinner";
 import { useState, useEffect } from "react";
 
 const Home = () => {
+
   //Obteniendo coordenadas del ordenador!
   const [stateLat, setStateLat] = useState();
   const [stateLon, setStateLon] = useState();
@@ -28,13 +29,14 @@ const Home = () => {
 
   const WEATHER_API_KEY = "dfad8d7ba7c96049c80872a31938271f";
   const WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?lat=${stateLat}&lon=${stateLon}&appid=${WEATHER_API_KEY}`;
+  const WEATHER_API_FIVEDAYS = `https://api.openweathermap.org/data/2.5/forecast?lat=${stateLat}&lon=${stateLon}&appid=${WEATHER_API_KEY}`;
 
   const fetchData = async () => {
     setDirection(false);
 
     const data = await fetch(WEATHER_API);
     const dataJSON = await data.json();
-    console.log(dataJSON);
+    // console.log(dataJSON);
     // console.log("DENTRO DEL FETCH", dataJSON);
     setWeatherDay(dataJSON);
     setDirection(true);
@@ -63,10 +65,10 @@ const Home = () => {
               </h1>
 
               <ActualTemperature 
-              classInit="datesHome"
+              styleInit="datesHome"
               resWeather={weatherDay}
-              classSecond="secondHome"
-              classImage="imageIcon"
+              styleSecond="secondHome"
+              styleImage="imageIcon"
               />
 
             </div>

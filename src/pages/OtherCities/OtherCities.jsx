@@ -8,8 +8,11 @@ import { WeatherContext } from "../../context/weatherContext";
 import { GeoCoordinates } from "../../utils/GeoCoordinates";
 import { imageCities } from "../../utils/ImageCities";
 import ActualTemperature from "../../components/ActualTemperature/ActualTemperature";
+import CardNextDays from "../../components/CardNextDays/CardNextDays";
 
 const OtherCities = () => {
+  const [dateCurrent, setDateCurrent] = useState("today");
+
   const { currentCity, setCurrentCity } = useContext(WeatherContext);
 
   const img = imageCities[currentCity];
@@ -38,15 +41,34 @@ const OtherCities = () => {
 
   const WEATHER_API_KEY = "dfad8d7ba7c96049c80872a31938271f";
   const WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?lat=${latCurrentCity}&lon=${lonCurrentCity}&appid=${WEATHER_API_KEY}`;
+  const WEATHER_API_FIVEDAYS = `https://api.openweathermap.org/data/2.5/forecast?lat=${latCurrentCity}&lon=${lonCurrentCity}&appid=${WEATHER_API_KEY}`;
 
   const fetchData1 = async () => {
+
     setpoli(false);
 
-    const data = await fetch(WEATHER_API);
-    const dataJSON = await data.json();
+    if (dateCurrent === "today") {
+      const data = await fetch(WEATHER_API);
+      const dataJSON = await data.json();
+      setWeatherDay1(dataJSON);
+
+    } else {
+      const data = await fetch(WEATHER_API_FIVEDAYS);
+      const dataJSON = await data.json();
+      console.log(dataJSON);
+
+      const newArray = dataJSON.list.filter((element, index) => {
+        return [index + 9] % 8 === 0;
+      });
+
+      console.log(newArray);
+
+      setWeatherDay1(newArray);
+      
+    }
 
     // console.log("DENTRO DEL FETCH", dataJSON);
-    setWeatherDay1(dataJSON);
+
     // setDayPhoto(weatherDay.weather[0].icon);
     setpoli(true);
   };
@@ -55,46 +77,51 @@ const OtherCities = () => {
     if (latCurrentCity) {
       fetchData1();
     }
-  }, [latCurrentCity]);
+  }, [latCurrentCity, dateCurrent]);
 
-  // console.log(currentCity);
+  // AQUÍ NO FUNCIONA!!!
+  
+
+  // console.log(weatherDay1);
 
   return (
     <>
       {poli ? (
         <main>
-          <article className="background-image"
+          <article
+            className="background-image"
             style={{ backgroundImage: `url(${img})` }}
           />
           <article className="container-cities">
             <section className="section-cities cities-flex">
-              <label htmlFor="cities">
-                <h3>Selecciona una ciudad</h3>
-              </label>
-
               <WeatherCities
                 setCurrentCity={setCurrentCity}
                 currentCity={currentCity}
+                dateCurrent={dateCurrent}
+                setDateCurrent={setDateCurrent}
               />
             </section>
 
-            <section>
+            {dateCurrent === "today" ? (
+              <section>
+                <ActualTemperature
+                  styleInit="dates-sub cities-flex"
+                  resWeather={weatherDay1}
+                  styleSecond="dates-half cities-flex"
+                  styleImage="img-time"
+                />
 
-              <ActualTemperature
-                classInit="dates-sub cities-flex"
-                resWeather={weatherDay1}
-                classSecond="dates-half cities-flex"
-                classImage="img-time"
-              />
+                <div className="dates-lower">
+                  <h3>{currentCity}</h3>
 
-              <div className="dates-lower">
-                <h3>{currentCity}</h3>
-
-                <div className="cities-principal">
-                  <WeatherDates resWeather={weatherDay1} view="cities" />
+                  <div className="cities-principal">
+                    <WeatherDates resWeather={weatherDay1} view="cities" />
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
+            ) : (
+              <h2>{Math.round(weatherDay1.main.temp - 273.15)}º</h2>
+            )}
           </article>
         </main>
       ) : (

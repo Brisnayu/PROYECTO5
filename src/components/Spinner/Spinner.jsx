@@ -5,7 +5,7 @@ const Spinner = () => {
     <div className="container-spinner">
       <h2>Cargando información 🫠</h2>
       <br />
-      <span class="loader"></span>
+      <span className="loader"></span>
     </div>
   );
 };
