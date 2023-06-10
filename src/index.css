@@ -26,7 +26,8 @@ body {
 }
 
 main {
-  height: 80vh;
+  min-height: 80vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,4 +38,10 @@ main {
 
 .active {
   color: var(--color-four);
+}
+
+@media screen and (max-width: 1115px) {
+  main {
+      margin-top: 1rem;
+  }
 }

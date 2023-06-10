@@ -41,35 +41,13 @@ const OtherCities = () => {
 
   const WEATHER_API_KEY = "dfad8d7ba7c96049c80872a31938271f";
   const WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?lat=${latCurrentCity}&lon=${lonCurrentCity}&appid=${WEATHER_API_KEY}`;
-  const WEATHER_API_FIVEDAYS = `https://api.openweathermap.org/data/2.5/forecast?lat=${latCurrentCity}&lon=${lonCurrentCity}&appid=${WEATHER_API_KEY}`;
 
   const fetchData1 = async () => {
-
     setpoli(false);
+    const data = await fetch(WEATHER_API);
+    const dataJSON = await data.json();
+    setWeatherDay1(dataJSON);
 
-    if (dateCurrent === "today") {
-      const data = await fetch(WEATHER_API);
-      const dataJSON = await data.json();
-      setWeatherDay1(dataJSON);
-
-    } else {
-      const data = await fetch(WEATHER_API_FIVEDAYS);
-      const dataJSON = await data.json();
-      console.log(dataJSON);
-
-      const newArray = dataJSON.list.filter((element, index) => {
-        return [index + 9] % 8 === 0;
-      });
-
-      console.log(newArray);
-
-      setWeatherDay1(newArray);
-      
-    }
-
-    // console.log("DENTRO DEL FETCH", dataJSON);
-
-    // setDayPhoto(weatherDay.weather[0].icon);
     setpoli(true);
   };
 
@@ -77,12 +55,11 @@ const OtherCities = () => {
     if (latCurrentCity) {
       fetchData1();
     }
-  }, [latCurrentCity, dateCurrent]);
+  }, [lonCurrentCity, dateCurrent]);
 
   // AQUÍ NO FUNCIONA!!!
-  
 
-  // console.log(weatherDay1);
+  console.log(weatherDay1);
 
   return (
     <>
@@ -103,7 +80,7 @@ const OtherCities = () => {
             </section>
 
             {dateCurrent === "today" ? (
-              <section>
+              <section className="second-section">
                 <ActualTemperature
                   styleInit="dates-sub cities-flex"
                   resWeather={weatherDay1}
@@ -120,7 +97,12 @@ const OtherCities = () => {
                 </div>
               </section>
             ) : (
-              <h2>{Math.round(weatherDay1.main.temp - 273.15)}º</h2>
+              
+                <CardNextDays
+                  stateLat={latCurrentCity}
+                  stateLon={lonCurrentCity}
+                />
+            
             )}
           </article>
         </main>

@@ -22,7 +22,14 @@
 
 /* Other Cities */
 
-.dates-half > p {
+.dates-half > p,
+.dates-sub p {
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+/* Styles */
+
+.dates-sub .hours {
+  display: none;
 }

@@ -14,6 +14,8 @@ const Home = () => {
   const [stateLon, setStateLon] = useState();
   const [direction, setDirection] = useState(false);
 
+  const [nameCity, SetNameCity] = useState();
+
   const [weatherDay, setWeatherDay] = useState([]);
 
   useEffect(() => {
@@ -46,6 +48,7 @@ const Home = () => {
     if (stateLat) {
       fetchData();
     }
+
   }, [stateLat]);
 
   return (

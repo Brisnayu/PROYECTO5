@@ -8,7 +8,7 @@
 
   width: 95%;
   height: 100%;
-  background-color: var(--color-three);
+  background-color: var(--color-five);
 
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
     rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
@@ -17,27 +17,29 @@
   border-radius: 15px;
 }
 
-.container-nextday h2 {
+.container-nextday > h2 {
   font-size: 4rem;
   color: var(--color-contrast);
 }
 
 .info-days {
   /* border: 3px solid yellow; */
-  width: 14rem;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   border-radius: 30px;
 
-  background-color: var(--color-five);
+  background-color: var(--color-background);
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
     rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
     rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 
   border-radius: 15px;
+  padding: 1.5rem;
+  gap: 0.3rem;
 }
 
 .info-days img {

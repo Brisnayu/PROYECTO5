@@ -62,7 +62,6 @@
   z-index: 2;
 }
 
-
 .weather-chart {
   width: 50%;
   height: inherit;
@@ -76,4 +75,25 @@
 
   /* background-color: var(--color-five); */
   border-radius: 30px;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 750px) {
+  .container-home {
+    border: 4px solid red;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .container-home h1 {
+    font-size: 1.5rem;
+  }
+
+
+  .weather-today,
+  .weather-chart {
+    width: 100%;
+  }
 }

@@ -14,7 +14,7 @@ const Today = () => {
   return (
     <div className="today-hours">
       <p>{today}</p>
-      <p>{hours}</p>
+      <p className="hours">{hours}</p>
     </div>
   );
 };

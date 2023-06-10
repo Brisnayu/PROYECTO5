@@ -1,0 +1,45 @@
+.container-info-days {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    width: 95%;
+    height: 80%;
+}
+
+main > h2 {
+    font-size: 3rem;
+    color: var(--color-contrast);
+    /* margin-left: 1.5rem; */
+}
+
+.container-info-days h3 {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.info-days h2 {
+    font-size: 2.5rem;
+    color: var(--color-contrast);
+}
+
+@media screen and (max-width: 1115px) {
+    .container-info-days {
+        /* border: 2px solid green; */
+        display: flex;
+        flex-direction: column;
+        margin: 2rem 0;
+    }
+
+
+    .info-days {
+        /* border: 3px solid red; */
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .info-days {
+        flex-direction: column;
+    }
+}

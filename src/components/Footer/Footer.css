@@ -8,6 +8,7 @@ footer {
   gap: 1rem;
   color: var(--color-contrast);
   /* background-color: var(--color-five); */
+  padding: 1rem;
 }
 
 .icon-rrss {
@@ -43,5 +44,20 @@ footer {
 
   100% {
     transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0.5rem;
+  }
+
+  footer p {
+    text-align: center;
   }
 }
