@@ -1,4 +1,3 @@
-import "./ActualTemperature.css";
 import Today from "../Today/Today";
 
 const ActualTemperature = ({

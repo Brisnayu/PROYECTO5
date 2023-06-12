@@ -34,18 +34,20 @@ const CardNextDays = ({ stateLat, stateLon }) => {
     }
   }, [stateLat]);
 
-  console.log("ARRAY DENTRO DE LA LISTA", weatherDay);
-  // console.log("ARRAY ORIGINAL", originWeather);
+  // console.log("ARRAY DENTRO DE LA LISTA", weatherDay);
+  console.log("ARRAY ORIGINAL", originWeather);
 
   return (
     <>
       {direction ? (
-        <main>
-          <h2>{originWeather.city.name}</h2>
+        <article className="container-card">
+          <h2>
+            {originWeather.city.name} - {originWeather.city.country}
+          </h2>
 
-          <article className="container-info-days">
+          <section className="container-info-days">
             {weatherDay.map((weather) => (
-              <section key={weather.dt} className="info-days">
+              <div key={weather.dt} className="info-days">
                 <h3>
                   {new Date(weather.dt_txt).toLocaleDateString([], {
                     year: "numeric",
@@ -60,7 +62,8 @@ const CardNextDays = ({ stateLat, stateLon }) => {
                 <h2>{Math.round(weather.main.temp - 273.15)}º</h2>
 
                 <h3>
-                  Sensación térmica {Math.round(weather.main.feels_like - 273.15)}º
+                  Sensación térmica{" "}
+                  {Math.round(weather.main.feels_like - 273.15)}º
                 </h3>
                 {/* <h3>
                   Mínima {Math.round(weather.main.temp_min - 273.15)}º - Máxima{" "}
@@ -72,12 +75,14 @@ const CardNextDays = ({ stateLat, stateLon }) => {
                   <p>Visibilidad {weather.visibility / 1000}km </p>
                   <p>nubes {weather.clouds.all}% </p>
                 </div>
-              </section>
+              </div>
             ))}
-          </article>
-        </main>
+          </section>
+        </article>
       ) : (
-        <Spinner />
+        <main>
+          <Spinner />
+        </main>
       )}
     </>
   );
