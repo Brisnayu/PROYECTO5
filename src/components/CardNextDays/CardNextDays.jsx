@@ -56,7 +56,7 @@ const CardNextDays = ({ stateLat, stateLon }) => {
                   })}
                 </h3>
                 <img
-                  src={`/public/icon-temps/${weather.weather[0].icon}.png`}
+                  src={`/icon-temps/${weather.weather[0].icon}.png`}
                   alt={weather.weather[0].description}
                 />
                 <h2>{Math.round(weather.main.temp - 273.15)}º</h2>
@@ -80,9 +80,7 @@ const CardNextDays = ({ stateLat, stateLon }) => {
           </section>
         </article>
       ) : (
-        <main>
-          <Spinner />
-        </main>
+        <Spinner />
       )}
     </>
   );

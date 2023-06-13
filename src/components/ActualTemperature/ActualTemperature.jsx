@@ -24,7 +24,7 @@ const ActualTemperature = ({
         </h3>
         <img
           className={styleImage}
-          src={`/public/icon-temps/${resWeather.weather[0].icon}.png`}
+          src={`/icon-temps/${resWeather.weather[0].icon}.png`}
           alt={resWeather.weather[0].description}
         />
         <p>

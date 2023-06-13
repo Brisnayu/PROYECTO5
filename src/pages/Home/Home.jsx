@@ -59,7 +59,7 @@ const Home = () => {
             <div
               className="background-weather"
               style={{
-                backgroundImage: `url(./public/icon-background/${weatherDay.weather[0].icon}.jpg)`,
+                backgroundImage: `url(./icon-background/${weatherDay.weather[0].icon}.jpg)`,
               }}
             />
             <div className="text-weather">
