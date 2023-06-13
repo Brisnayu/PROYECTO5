@@ -1,0 +1,10 @@
+.gifNotFound {
+    width: 310px;
+    height: auto;
+}
+
+.infoNotFound {
+    color: var(--color-contrast);
+    margin: 0 2rem;
+    text-align: center;
+}

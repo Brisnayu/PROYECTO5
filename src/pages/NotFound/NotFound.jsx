@@ -1,10 +1,12 @@
-import "./NotFound.css";
+import InfoNotFound from "../../components/InfoNotFound/InfoNotFound";
 
 const NotFound = () => {
   return (
-    <main>
-      <h2>Estoy en NotFound</h2>
-    </main>
+    <InfoNotFound
+      gifCat="./gif-not-found.gif"
+      alt="Gif cat not found"
+      text="Página no encontrada"
+    />
   );
 };
 

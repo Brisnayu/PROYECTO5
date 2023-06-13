@@ -1,4 +1,6 @@
 import "./Footer.css";
+import { v4 as uuidv4 } from "uuid";
+import { SocialNetwork } from "../../utils/SocialNetwork";
 
 const Footer = () => {
   return (
@@ -8,18 +10,11 @@ const Footer = () => {
       </div>
 
       <div className="icon-rrss">
-        <a href="https://github.com/Brisnayu" target="_blank">
-          <img src="./icon-github.png" alt="icon-linkedin" />
-        </a>
-        <a href="https://www.linkedin.com/in/brisna-a-paez-m-283934154" target="_blank">
-          <img src="./icon-linkedin.png" alt="icon-github" />
-        </a>
-        <a href="https://www.instagram.com/brisna_ayu/" target="_blank">
-          <img src="./icon-instagram.png" alt="icon-email" />
-        </a>
-        <a href="mailto:brisnapaez25@gmail.com" target="_blank">
-          <img src="./icon-email.png" alt="icon-instagram" />
-        </a>
+        {SocialNetwork.map((rrss) => (
+          <a href={rrss.url} target="_blank" key={uuidv4()}>
+            <img src={rrss.img} alt={rrss.alt} />
+          </a>
+        ))}
       </div>
     </footer>
   );
