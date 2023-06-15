@@ -16,12 +16,10 @@ const CardNextDays = ({ stateLat, stateLon }) => {
 
     const data = await fetch(WEATHER_API_FIVEDAYS);
     const dataJSON = await data.json();
-    // console.log(dataJSON);
-    // console.log("DENTRO DEL FETCH", dataJSON.list);
     setOriginWeather(dataJSON);
 
     const newArray = dataJSON.list.filter((element, index) => {
-      return [index + 9] % 8 === 0;
+      return [index + 8] % 8 === 0;
     });
 
     setWeatherDay(newArray);
@@ -34,8 +32,6 @@ const CardNextDays = ({ stateLat, stateLon }) => {
     }
   }, [stateLat]);
 
-  // console.log("ARRAY DENTRO DE LA LISTA", weatherDay);
-  console.log("ARRAY ORIGINAL", originWeather);
 
   return (
     <>
