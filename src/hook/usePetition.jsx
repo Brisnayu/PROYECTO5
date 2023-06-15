@@ -22,7 +22,7 @@ const usePetition = () => {
 
   const img = imageCities[currentCity];
 
-  useEffect(() => {
+  const getWeatherPosition = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setStateLat(position.coords.latitude);
@@ -34,7 +34,9 @@ const usePetition = () => {
         }
       }
     );
-  }, []);
+  }
+
+  console.log("ARRAY", weatherDay)
 
   useEffect(() => {
     setStateLat(currentCCityData[0].coord.lat);
@@ -72,6 +74,7 @@ const usePetition = () => {
     dateCurrent,
     stateLat,
     stateLon,
+    getWeatherPosition
   };
 };
 

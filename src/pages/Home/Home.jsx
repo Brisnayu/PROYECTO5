@@ -5,10 +5,14 @@ import ActualTemperature from "../../components/ActualTemperature/ActualTemperat
 import Spinner from "../../components/Spinner/Spinner";
 import InfoNotFound from "../../components/InfoNotFound/InfoNotFound";
 import usePetition from "../../hook/usePetition";
+import { useEffect } from "react";
 
 const Home = () => {
+  const { direction, denied, weatherDay, getWeatherPosition } = usePetition();
 
-  const { direction, denied, weatherDay } = usePetition();
+  useEffect(() => {
+    getWeatherPosition();
+  }, []);
 
   return (
     <main>
