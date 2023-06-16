@@ -7,19 +7,34 @@ import ActualTemperature from "../../components/ActualTemperature/ActualTemperat
 import CardNextDays from "../../components/CardNextDays/CardNextDays";
 
 import usePetition from "../../hook/usePetition";
+import { useEffect, useState } from "react";
 
 const OtherCities = () => {
   const {
     img,
     direction,
     weatherDay,
-    setDateCurrent,
     setCurrentCity,
     currentCity,
-    dateCurrent,
     stateLat,
+    fetchData,
+    dateCurrent,
+    setDateCurrent,
+    getWeatherCity,
     stateLon,
   } = usePetition();
+
+  useEffect(() => {
+    getWeatherCity();
+  }, [currentCity]);
+
+  // console.log("LATITUD NEXT DAY", stateLat);
+
+  useEffect(() => {
+    if (stateLat) {
+      fetchData();
+    }
+  }, [stateLat, dateCurrent]);
 
   return (
     <>

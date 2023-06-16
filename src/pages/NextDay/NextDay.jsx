@@ -1,28 +1,37 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./NextDay.css";
 
 import CardNextDays from "../../components/CardNextDays/CardNextDays";
+import usePetition from "../../hook/usePetition";
+import InfoNotFound from "../../components/InfoNotFound/InfoNotFound";
 
 const NextDay = () => {
-  //Obteniendo coordenadas del ordenador!
-  const [stateLat, setStateLat] = useState();
-  const [stateLon, setStateLon] = useState();
-  
+
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setStateLat(position.coords.latitude.toFixed(2));
-      setStateLon(position.coords.longitude.toFixed(2));
-    });
+    getWeatherPosition();
   }, []);
+
+  const {
+    getWeatherPosition,
+    denied,
+    stateLat,
+    stateLon
+  } = usePetition();
+
 
   return (
     <main>
-        <article className="container-nextday">
-          <CardNextDays
-            stateLat={stateLat}
-            stateLon={stateLon}
-          />
-        </article>
+      {denied === true ? (
+        <InfoNotFound
+          gifCat="./gif-denied.gif"
+          alt="Gif cat denied"
+          text="Si quieres saber el tiempo en tu dirección actual, debes autorizar la geolocalización en tu navegador."
+        />
+      ) : (
+            <article className="container-nextday">
+              <CardNextDays stateLat={stateLat} stateLon={stateLon}/>
+            </article>
+      )}
     </main>
   );
 };

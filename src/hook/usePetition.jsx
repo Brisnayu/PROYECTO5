@@ -3,8 +3,9 @@ import { WeatherContext } from "../context/weatherContext";
 import { GeoCoordinates } from "../utils/GeoCoordinates";
 import { imageCities } from "../utils/ImageCities";
 
+import { WEATHER_API_KEY } from "../utils/DatesApi";
+
 const usePetition = () => {
-  //Obteniendo coordenadas del ordenador!
   const [stateLat, setStateLat] = useState();
   const [stateLon, setStateLon] = useState();
   const [direction, setDirection] = useState(false);
@@ -34,16 +35,13 @@ const usePetition = () => {
         }
       }
     );
-  }
+  };
 
-  console.log("ARRAY", weatherDay)
-
-  useEffect(() => {
+  const getWeatherCity = () => {
     setStateLat(currentCCityData[0].coord.lat);
     setStateLon(currentCCityData[0].coord.lon);
-  }, [currentCity]);
+  };
 
-  const WEATHER_API_KEY = "dfad8d7ba7c96049c80872a31938271f";
   const WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?lat=${stateLat}&lon=${stateLon}&appid=${WEATHER_API_KEY}`;
 
   const fetchData = async () => {
@@ -54,14 +52,12 @@ const usePetition = () => {
     // console.log(dataJSON);
     // console.log("DENTRO DEL FETCH", dataJSON);
     setWeatherDay(dataJSON);
+
+    console.log("ESTOY EN EL FETCH");
+
     setDirection(true);
   };
 
-  useEffect(() => {
-    if (stateLat) {
-      fetchData();
-    }
-  }, [stateLat, dateCurrent]);
 
   return {
     img,
@@ -74,7 +70,9 @@ const usePetition = () => {
     dateCurrent,
     stateLat,
     stateLon,
-    getWeatherPosition
+    getWeatherPosition,
+    getWeatherCity,
+    fetchData,
   };
 };
 

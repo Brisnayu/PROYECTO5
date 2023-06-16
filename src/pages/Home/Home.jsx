@@ -8,11 +8,24 @@ import usePetition from "../../hook/usePetition";
 import { useEffect } from "react";
 
 const Home = () => {
-  const { direction, denied, weatherDay, getWeatherPosition } = usePetition();
-
   useEffect(() => {
     getWeatherPosition();
   }, []);
+
+  const {
+    direction,
+    denied,
+    weatherDay,
+    getWeatherPosition,
+    fetchData,
+    stateLat,
+  } = usePetition();
+
+  useEffect(() => {
+    if (stateLat) {
+      fetchData();
+    }
+  }, [stateLat]);
 
   return (
     <main>
