@@ -7,22 +7,26 @@ import ActualTemperature from "../../components/ActualTemperature/ActualTemperat
 import CardNextDays from "../../components/CardNextDays/CardNextDays";
 
 import usePetition from "../../hook/usePetition";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { WeatherContext } from "../../context/weatherContext";
+import { imageCities } from "../../utils/ImageCities";
+
 
 const OtherCities = () => {
+
+  const { currentCity, setCurrentCity } = useContext(WeatherContext);
+  const [dateCurrent, setDateCurrent] = useState("today");
+
   const {
-    img,
     direction,
     weatherDay,
-    setCurrentCity,
-    currentCity,
     stateLat,
-    fetchData,
-    dateCurrent,
-    setDateCurrent,
-    getWeatherCity,
     stateLon,
+    fetchData,
+    getWeatherCity,
   } = usePetition();
+
+  const img = imageCities[currentCity];
 
   useEffect(() => {
     getWeatherCity();

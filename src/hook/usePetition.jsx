@@ -1,7 +1,6 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { WeatherContext } from "../context/weatherContext";
 import { GeoCoordinates } from "../utils/GeoCoordinates";
-import { imageCities } from "../utils/ImageCities";
 
 import { WEATHER_API_KEY } from "../utils/DatesApi";
 
@@ -11,17 +10,13 @@ const usePetition = () => {
   const [direction, setDirection] = useState(false);
   const [denied, setDenied] = useState(false);
 
-  // Array con el clima del día ACTUAL!
   const [weatherDay, setWeatherDay] = useState([]);
 
-  const [dateCurrent, setDateCurrent] = useState("today");
-  const { currentCity, setCurrentCity } = useContext(WeatherContext);
+  const { currentCity } = useContext(WeatherContext);
 
   const currentCCityData = GeoCoordinates.filter(
     (city) => city.name === currentCity
   );
-
-  const img = imageCities[currentCity];
 
   const getWeatherPosition = () => {
     navigator.geolocation.getCurrentPosition(
@@ -49,8 +44,6 @@ const usePetition = () => {
 
     const data = await fetch(WEATHER_API);
     const dataJSON = await data.json();
-    // console.log(dataJSON);
-    // console.log("DENTRO DEL FETCH", dataJSON);
     setWeatherDay(dataJSON);
 
     console.log("ESTOY EN EL FETCH");
@@ -58,16 +51,10 @@ const usePetition = () => {
     setDirection(true);
   };
 
-
   return {
-    img,
     direction,
     denied,
     weatherDay,
-    setDateCurrent,
-    setCurrentCity,
-    currentCity,
-    dateCurrent,
     stateLat,
     stateLon,
     getWeatherPosition,
