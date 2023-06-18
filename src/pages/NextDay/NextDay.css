@@ -1,11 +1,9 @@
 .container-nextday {
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 4rem;
-
   min-width: 90vw;
   min-height: 70vh;
   background-color: var(--color-five);

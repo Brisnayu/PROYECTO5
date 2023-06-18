@@ -1,3 +1,4 @@
+import "./WeatherDates.css";
 import CardWeatherDates from "../CardWeatherDates/CardWeatherDates";
 
 const WeatherCities = ({ resWeather, view }) => {

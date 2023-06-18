@@ -44,9 +44,8 @@ const usePetition = () => {
 
     const data = await fetch(WEATHER_API);
     const dataJSON = await data.json();
-    setWeatherDay(dataJSON);
 
-    console.log("ESTOY EN EL FETCH");
+    setWeatherDay(dataJSON);
 
     setDirection(true);
   };

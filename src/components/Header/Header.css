@@ -5,8 +5,6 @@ header {
   justify-content: flex-end;
   align-items: center;
   flex-wrap: wrap;
-  /* background-color: var(--color-five); */
-  
 }
 
 header ul {

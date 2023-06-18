@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer>
       <div>
-        <p>Created with love 💕 by Brisna Páez for Rock The Code.</p>
+        <p>Creado con cariño 💕 por Brisna Páez para Rock The Code.</p>
       </div>
 
       <div className="icon-rrss">

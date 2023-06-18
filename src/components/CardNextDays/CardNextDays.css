@@ -11,7 +11,6 @@
 .container-card > h2 {
   font-size: 3rem;
   color: var(--color-contrast);
-  /* margin-left: 1.5rem; */
   text-align: center;
 }
 
@@ -30,7 +29,6 @@
 }
 
 .info-days {
-  /* border: 3px solid yellow; */
   width: 100%;
   height: 100%;
   display: flex;
@@ -63,21 +61,18 @@
 }
 
 .info-days img {
-  /* border: 2px solid blue; */
   width: 8rem;
   height: 8rem;
 }
 
 @media screen and (max-width: 1115px) {
   .container-info-days {
-    /* border: 2px solid green; */
     display: flex;
     flex-direction: column;
     margin: 2rem 0;
   }
 
   .info-days {
-    /* border: 3px solid red; */
     flex-direction: row;
   }
 }

@@ -9,13 +9,13 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">Inicio</NavLink>
           </li>
           <li>
-            <NavLink to="/NextDay">Next Day</NavLink>
+            <NavLink to="/NextDay">Próximos días</NavLink>
           </li>
           <li>
-            <NavLink to="/OtherCities">Other Cities</NavLink>
+            <NavLink to="/OtherCities">Otras ciudades</NavLink>
           </li>
         </ul>
       </nav>

@@ -1,10 +1,8 @@
 .style-select {
-    /* border: 2px solid red; */
-    background-color: var(--color-two);
-    border-radius: 10px;
-  
-    width: 15rem;
-    height: 2rem;
-    color: var(--color-four);
-    font-size: 1rem;
-  }
+  background-color: var(--color-two);
+  border-radius: 10px;
+  width: 15rem;
+  height: 2rem;
+  color: var(--color-four);
+  font-size: 1rem;
+}

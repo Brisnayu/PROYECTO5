@@ -32,8 +32,6 @@ const OtherCities = () => {
     getWeatherCity();
   }, [currentCity]);
 
-  // console.log("LATITUD NEXT DAY", stateLat);
-
   useEffect(() => {
     if (stateLat) {
       fetchData();

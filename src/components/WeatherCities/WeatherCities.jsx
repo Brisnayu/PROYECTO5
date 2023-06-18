@@ -37,7 +37,7 @@ const WeatherCities = ({
         onChange={(event) => setDateCurrent(event.target.value)}
       >
         <option value="today">Hoy</option>
-        <option value="next-days">Resto de la semana</option>
+        <option value="next-days">Próximos días</option>
       </select>
     </>
   );
