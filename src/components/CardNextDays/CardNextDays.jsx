@@ -1,6 +1,5 @@
-import Spinner from "../Spinner/Spinner";
 import "./CardNextDays.css";
-
+import Spinner from "../Spinner/Spinner";
 import { useState, useEffect } from "react";
 
 const CardNextDays = ({ stateLat, stateLon }) => {
@@ -8,8 +7,7 @@ const CardNextDays = ({ stateLat, stateLon }) => {
   const [originWeather, setOriginWeather] = useState([]);
   const [direction, setDirection] = useState(false);
 
-  const WEATHER_API_KEY = "dfad8d7ba7c96049c80872a31938271f";
-  const WEATHER_API_FIVEDAYS = `https://api.openweathermap.org/data/2.5/forecast?lat=${stateLat}&lon=${stateLon}&appid=${WEATHER_API_KEY}`;
+  const WEATHER_API_FIVEDAYS = `https://api.openweathermap.org/data/2.5/forecast?lat=${stateLat}&lon=${stateLon}&appid=${import.meta.env.VITE_API_KEY}`;
 
   const fetchData = async () => {
     setDirection(false);

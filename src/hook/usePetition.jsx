@@ -2,8 +2,6 @@ import { useState, useContext } from "react";
 import { WeatherContext } from "../context/weatherContext";
 import { GeoCoordinates } from "../utils/GeoCoordinates";
 
-import { WEATHER_API_KEY } from "../utils/DatesApi";
-
 const usePetition = () => {
   const [stateLat, setStateLat] = useState();
   const [stateLon, setStateLon] = useState();
@@ -37,7 +35,7 @@ const usePetition = () => {
     setStateLon(currentCCityData[0].coord.lon);
   };
 
-  const WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?lat=${stateLat}&lon=${stateLon}&appid=${WEATHER_API_KEY}`;
+  const WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?lat=${stateLat}&lon=${stateLon}&appid=${import.meta.env.VITE_API_KEY}`;
 
   const fetchData = async () => {
     setDirection(false);

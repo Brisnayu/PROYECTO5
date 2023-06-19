@@ -2,7 +2,6 @@ import "./OtherCities.css";
 import WeatherCities from "../../components/WeatherCities/WeatherCities";
 import WeatherDates from "../../components/WeatherDates/WeatherDates";
 import Spinner from "../../components/Spinner/Spinner";
-
 import ActualTemperature from "../../components/ActualTemperature/ActualTemperature";
 import CardNextDays from "../../components/CardNextDays/CardNextDays";
 
@@ -10,7 +9,6 @@ import usePetition from "../../hook/usePetition";
 import { useContext, useEffect, useState } from "react";
 import { WeatherContext } from "../../context/weatherContext";
 import { imageCities } from "../../utils/ImageCities";
-
 
 const OtherCities = () => {
 
@@ -36,7 +34,7 @@ const OtherCities = () => {
     if (stateLat) {
       fetchData();
     }
-  }, [stateLat, dateCurrent]);
+  }, [stateLat]);
 
   return (
     <>
