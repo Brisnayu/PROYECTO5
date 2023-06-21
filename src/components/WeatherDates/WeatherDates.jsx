@@ -1,7 +1,7 @@
 import "./WeatherDates.css";
 import CardWeatherDates from "../CardWeatherDates/CardWeatherDates";
 
-const WeatherCities = ({ resWeather, view }) => {
+const WeatherDates = ({ resWeather, view }) => {
 
   return (
     <>
@@ -29,4 +29,4 @@ const WeatherCities = ({ resWeather, view }) => {
   );
 };
 
-export default WeatherCities;
+export default WeatherDates;
